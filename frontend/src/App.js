@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Login from "./Route/login/Login";
 import Signup from "./Route/signin/Signup";
+import Dashboard from "./Route/dashboard/Dashboard";
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -40,6 +41,8 @@ render()
         <Switch>
           <Route exact path="/" component={Login}/>
           <Route exact path="/signup" component={Signup}/>
+          <Route exact path="/dashboard" component={Dashboard}/>
+          
         </Switch>
       </div>
     </Router>
