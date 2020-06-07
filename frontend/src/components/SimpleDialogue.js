@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 
 export default function SimpleDialog(props) {
   const classes = useStyles();
-  const { onClose, selectedValue, open } = props;
+  const { onClose, selectedValue, open } = props;       
 
   const handleClose = () => {
     onClose(selectedValue);

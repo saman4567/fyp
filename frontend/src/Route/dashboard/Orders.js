@@ -1,14 +1,16 @@
-import React from 'react';
-import Link from '@material-ui/core/Link';
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Title from './Title';
-import { Button , Box, } from '@material-ui/core';
-import SimpleDialog from '../../components/SimpleDialogue';
+import { Box, Button, Container } from "@material-ui/core";
+
+import Link from "@material-ui/core/Link";
+import PostForm from "../posts/PostForm";
+import React from "react";
+import SimpleDialog from "../../components/SimpleDialogue";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Title from "./Title";
+import { makeStyles } from "@material-ui/core/styles";
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -16,11 +18,46 @@ function createData(id, date, name, shipTo, paymentMethod, amount) {
 }
 
 const rows = [
-  createData(0, '16 Mar, 2019', 'Elvis Presley', 'Tupelo, MS', 'VISA ⠀•••• 3719', 312.44),
-  createData(1, '16 Mar, 2019', 'Paul McCartney', 'London, UK', 'VISA ⠀•••• 2574', 866.99),
-  createData(2, '16 Mar, 2019', 'Tom Scholz', 'Boston, MA', 'MC ⠀•••• 1253', 100.81),
-  createData(3, '16 Mar, 2019', 'Michael Jackson', 'Gary, IN', 'AMEX ⠀•••• 2000', 654.39),
-  createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'Long Branch, NJ', 'VISA ⠀•••• 5919', 212.79),
+  createData(
+    0,
+    "16 Mar, 2019",
+    "Elvis Presley",
+    "Tupelo, MS",
+    "VISA ⠀•••• 3719",
+    312.44
+  ),
+  createData(
+    1,
+    "16 Mar, 2019",
+    "Paul McCartney",
+    "London, UK",
+    "VISA ⠀•••• 2574",
+    866.99
+  ),
+  createData(
+    2,
+    "16 Mar, 2019",
+    "Tom Scholz",
+    "Boston, MA",
+    "MC ⠀•••• 1253",
+    100.81
+  ),
+  createData(
+    3,
+    "16 Mar, 2019",
+    "Michael Jackson",
+    "Gary, IN",
+    "AMEX ⠀•••• 2000",
+    654.39
+  ),
+  createData(
+    4,
+    "15 Mar, 2019",
+    "Bruce Springsteen",
+    "Long Branch, NJ",
+    "VISA ⠀•••• 5919",
+    212.79
+  ),
 ];
 
 function preventDefault(event) {
@@ -34,7 +71,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Orders() {
-
   const [open, setOpen] = React.useState(false);
   const classes = useStyles();
 
@@ -44,18 +80,24 @@ export default function Orders() {
 
   const handleClose = (value) => {
     setOpen(false);
-    
   };
 
   return (
     <React.Fragment>
-       <Box display="flex" flexDirection="row" p={1} m={1} bgcolor="background.paper" justifyContent="space-between">
-       <Title>Recent Orders</Title>
-       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        
-        Add House</Button>
-       </Box>
-    
+      <Box
+        display="flex"
+        flexDirection="row"
+        p={1}
+        m={1}
+        bgcolor="background.paper"
+        justifyContent="space-between"
+      >
+        <Title>Recent Orders</Title>
+        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+          Add House
+        </Button>
+      </Box>
+
       <Table size="small">
         <TableHead>
           <TableRow>
@@ -83,9 +125,16 @@ export default function Orders() {
           See more orders
         </Link>
       </div>
-      <SimpleDialog title={"Add House"} content={
-        <p>We will add a form here</p>
-      }  open={open} onClose={handleClose} />
+      <SimpleDialog
+        title={"Add House"}
+        content={
+          <Container maxWidth="lg">
+            <PostForm />
+          </Container>
+        }
+        open={open}
+        onClose={handleClose}
+      />
     </React.Fragment>
   );
 }
